@@ -5,7 +5,6 @@ global class movementPokeBatch implements Database.Batchable<Integer>, Database.
         for (Integer i = 1; i <= 826; i++) {
             indexList.add(i);
         }
-        system.debug(indexList.size());
         return indexList;
     }
     global void execute(Database.BatchableContext bc, List<Integer> indexList){
@@ -35,19 +34,25 @@ global class movementPokeBatch implements Database.Batchable<Integer>, Database.
             if (result.get('effect_chance') == null) {
                 movement.Effect_chance__c = 'The move doesnt have an associated side effect.';
             } else {
-                movement.Effect_chance__c = (String)result.get('effect_chance');
+                Integer effectNumber = (Integer)result.get('effect_chance');
+                String effectStr = String.valueOf(effectNumber);
+                movement.Effect_chance__c = effectStr;
             }
 
             List<Object> effect = (List<Object>)result.get('effect_entries');
-            Map<String, Object> effectPath = (Map<String, Object>)effect[0];
-            Map<String, Object> language = (Map<String, Object>)effectPath.get('language');
-
-            if (language.get('name') == 'en') {
-                movement.Effect__c = (String) effectPath.get('short_effect');
+            if (effect.isEmpty()) {
+                movement.Effect__c = 'The effect is not specified';
             } else {
-                movement.Effect__c = null;
-            }
+                Map<String, Object> effectPath = (Map<String, Object>)effect[0];
+                Map<String, Object> language = (Map<String, Object>)effectPath.get('language');
 
+                if (language.get('name') == 'en') {
+                    movement.Effect__c = (String) effectPath.get('short_effect');
+                } else {
+                    movement.Effect__c = null;
+                }
+            }
+            
             insert movement;         
         }else {
             System.debug(response.getStatusCode());
