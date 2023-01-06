@@ -1,21 +1,61 @@
-global class movementPokeBatch implements Database.Batchable<Integer> {
+global class movementPokeBatch implements Database.Batchable<Integer>, Database.AllowsCallouts {
     global List <Integer> start(Database.BatchableContext bc) {
-        // collect the batches of records or objects to be passed to execute
-        /* El numero de movimientos que hay que poner es de 826, dejo 10 para que cuando lo pruebe no explote la org */
-        List<Integer> index = new List<Integer>();
-        for (Integer i = 1; i <= 10; i++) {
-            index.add(i);
+
+        List<Integer> indexList = new List<Integer>();
+        for (Integer i = 1; i <= 826; i++) {
+            indexList.add(i);
         }
-        system.debug(index.size());
-        return index;
+        system.debug(indexList.size());
+        return indexList;
     }
     global void execute(Database.BatchableContext bc, List<Integer> indexList){
-        system.debug(indexList[0]);
-/* En esta parte deberia estar la llamada a la api, agregar una variable que convierta el integer en string y agregarlo al endpoint al final, mapear el resultado, crear la cuenta, y agregarla. Ver si tengo que agregar un if 
-else para ver si trae resultado, si trae resultado cargarlo y sino cargar un string vacio */
-        // process each batch of records
+
+        Http http = new Http();
+        HttpRequest request = new HttpRequest();
+        request.setEndpoint('https://pokeapi.co/api/v2/move/' + indexList[0]);
+        request.setMethod('GET');
+        request.setHeader('Content-Type', 'application/json');
+        HttpResponse response = http.send(request);
+
+        if (response.getStatusCode() == 200) {
+            Moves__c movement = new Moves__c();
+
+            Map<String, Object> result = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
+            movement.ExtId__c = (Integer)result.get('id');
+            movement.Accuracy__c = (Integer)result.get('accuracy');
+            movement.Priority__c = (Integer)result.get('priority');
+            Map<String, Object> target = (Map<String, Object>)result.get('target');
+            movement.Target__c = (String)target.get('name');
+            movement.Power__c = (Integer)result.get('power');
+            movement.Pp__c = (Integer)result.get('pp');
+            Map<String, Object> type = (Map<String, Object>)result.get('type');
+            movement.Type__c = (String)type.get('name');
+            String UpperName = (String) result.get('name');
+            movement.Name = UpperName.toUppercase().substring(0,1) + UpperName.substring(1);
+            if (result.get('effect_chance') == null) {
+                movement.Effect_chance__c = 'The move doesnt have an associated side effect.';
+            } else {
+                movement.Effect_chance__c = (String)result.get('effect_chance');
+            }
+
+            List<Object> effect = (List<Object>)result.get('effect_entries');
+            Map<String, Object> effectPath = (Map<String, Object>)effect[0];
+            Map<String, Object> language = (Map<String, Object>)effectPath.get('language');
+
+            if (language.get('name') == 'en') {
+                movement.Effect__c = (String) effectPath.get('short_effect');
+            } else {
+                movement.Effect__c = null;
+            }
+
+            insert movement;         
+        }else {
+            System.debug(response.getStatusCode());
+
+        }
+
     }
     global void finish(Database.BatchableContext bc){
-        // execute any post-processing operations
+        
     }
 }
