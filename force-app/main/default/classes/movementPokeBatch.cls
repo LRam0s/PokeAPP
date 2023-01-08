@@ -2,7 +2,7 @@ global class movementPokeBatch implements Database.Batchable<Integer>, Database.
     global List <Integer> start(Database.BatchableContext bc) {
 
         List<Integer> indexList = new List<Integer>();
-        for (Integer i = 1; i <= 1; i++) {
+        for (Integer i = 1; i <= 826; i++) {
             indexList.add(i);
         }
         return indexList;
