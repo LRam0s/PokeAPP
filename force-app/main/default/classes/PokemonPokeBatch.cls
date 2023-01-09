@@ -2,7 +2,7 @@ global class PokemonPokeBatch implements Database.Batchable<Integer>, Database.A
     global List <Integer> start(Database.BatchableContext bc) {
 
         List<Integer> indexList = new List<Integer>();
-        for (Integer i = 1; i <= 898; i++) {
+        for (Integer i = 1; i <= 1; i++) {
             indexList.add(i);
         }
         return indexList;
@@ -70,16 +70,16 @@ global class PokemonPokeBatch implements Database.Batchable<Integer>, Database.A
                 pokemon.Ability__c = lookupAbility.Id;
             } else {       
                 Integer randomNum =(Math.random() > 0.5) ? 1 : 0;
-                Map<String, Object> abilitiesPath = (Map<String, Object>)abilities[randomNum];
-                Map<String, Object> ability = (Map<String, Object>)abilitiesPath.get('ability');
+                Map<String, Object> abilitiesPath = (Map<String, Object>)abilities[randomNum];                
+                Map<String, Object> ability = (Map<String, Object>)abilitiesPath.get('ability');                
                 String UpperNameAbility = (String) ability.get('name');
-                Abilities__c lookupAbility = [SELECT Id FROM Abilities__c WHERE Name = :UpperNameAbility];
+                Abilities__c lookupAbility = [SELECT Id FROM Abilities__c WHERE Name = 'shield-dust'];
                 pokemon.Ability__c = lookupAbility.Id;
             }
             
 
             List<Object> moves = (List<Object>)result.get('moves');
-            Integer movesIndex = moves.size() -1 == 0 ? moves.size() : moves.size() -1 ;
+            Integer movesIndex = moves.size() -1 <= 3 ? moves.size() : moves.size() -1 ;
 
             Integer roundCount = 0;
             if (movesIndex >= 4) {
