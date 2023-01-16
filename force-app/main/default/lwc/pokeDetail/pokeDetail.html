@@ -1,0 +1,25 @@
+<template>
+        <article class="container" onclick={handleOpenPokemonDetail}>
+            <div>
+                <img src= {pokemon.Image__c} alt="Pokemon" style="width: 300px;">
+            </div>
+            <section class="header">
+                <div style="display: flex; gap: 0.2rem; align-items: center; font-size: 1rem">
+                    <img style="width: 30px;" src="https://res.cloudinary.com/dpsc3qokx/image/upload/v1673548795/icons8-pokeball-2-48_k8ig3z.png" alt="Pokeball">
+                    <span >#{pokemon.ExtId__c}</span>
+                </div>
+                <div>
+                    <span class="title">{pokemon.Name}</span>
+                </div>
+            </section>
+            <section class="sprite">
+<!--                 <div id="type" class="sprite">
+                    
+                </div> -->
+                <span class="type">{pokemon.Types__c} </span>
+                <!-- <c-poke-filters types={pokemon.Types__c}></c-poke-filters> -->
+                <span>Generation: {pokemon.Generation__c}</span>
+            </section>
+        </article>
+    </template>
+<!-- LWC1065: Invalid key value for element <span>. Key cannot reference for:each index index -->            

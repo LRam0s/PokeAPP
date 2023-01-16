@@ -1,0 +1,62 @@
+<template>
+    <template if:true={pokemons.data}>
+        <section class="container">
+            <div style="display: inline-flex;">
+                <div style="display: flex; flex-direction:column; align-items:center">
+                    <p style="font-weight: bold; text-decoration:underline; font-size:15px">Search for pokemon</p>
+                    <lightning-input type="search"
+                onchange={handleSearchPokemon}
+                variant="label-hidden"
+                            class="slds-var-m-bottom_small innerSearchBar"
+                            label="Search"
+                            value={pokemonName}>
+                        </lightning-input>
+                </div>
+            </div>
+            <article class="picklist">
+                <div style="display: flex; flex-direction:column; align-items:center">
+
+                    <p style="font-weight: bold; text-decoration:underline; font-size:15px">Quantity</p>
+                    <div class="innerPicklist">
+                        <p onchange={countTotalPokemon}> Pokemon: {count}</p>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction:column; align-items:center">
+                    <p style="font-weight: bold; text-decoration:underline; font-size:15px">Generation</p>
+                    <select aria-label="Generación: " onchange={handleSearchGeneration} class="innerPicklist">
+                        <template for:each={options} for:item="option">
+                            <option key={option.value} value={option.value} label={option.label}>{option.label}</option>
+                        </template>
+                    </select>
+                </div>
+                <div style="display: flex; flex-direction:column; align-items:center">
+                    <div>
+                        <p style="font-weight: bold; text-decoration:underline; font-size:15px">Types</p>
+                    </div>
+                    <div>
+                        <select aria-label="Tipo: " onchange={handleSearchType} class="innerPicklist">
+                            <template for:each={types} for:item="type">
+                                <option key={type.value} value={type.value} label={type.label}>{type.label}</option>
+                            </template>
+                        </select>
+                        <select aria-label="Tipo secundario: " onchange={handleSearchType2} class="innerPicklist">
+                            <template for:each={types2} for:item="type2">
+                                <option key={type2.value} value={type2.value} label={type2.label}>{type2.label}</option>
+                            </template>
+                        </select>
+                    </div>
+                </div>                    
+            </article>
+        </section>
+                <template for:each={pokemons.data} for:item="pokemon">
+                    <section key = {pokemon.ExtId} style="display: inline-flex;">
+                        <c-poke-detail pokemon = {pokemon} onpokemonview = {linkToPokemonDetail}></c-poke-detail>
+                    </section>
+                </template>
+    </template>
+    <template if:false={pokemons}>
+        <div class="slds-text-color_error">
+            Ocurrió un error al cargar la pokedex.
+        </div>
+    </template>
+</template>
