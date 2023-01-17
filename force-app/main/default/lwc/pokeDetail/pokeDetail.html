@@ -1,4 +1,5 @@
 <template>
+    <template if:true={pokemon}>
         <article class="container" onclick={handleOpenPokemonDetail}>
             <div>
                 <img src= {pokemon.Image__c} alt="Pokemon" style="width: 300px;">
@@ -17,4 +18,5 @@
                 <span>Generation: {pokemon.Generation__c}</span>
             </section>
         </article>
+    </template>
     </template>            
