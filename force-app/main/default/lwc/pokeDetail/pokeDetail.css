@@ -32,8 +32,9 @@
 }
 
 .type{
-    background-color: rgb(115, 121, 115);
+    background-color: goldenrod;
     border-radius: 5px;
     padding: 0.3rem;
     padding-inline: 1rem;
+    
 }

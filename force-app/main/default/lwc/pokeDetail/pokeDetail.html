@@ -9,17 +9,12 @@
                     <span >#{pokemon.ExtId__c}</span>
                 </div>
                 <div>
-                    <span class="title">{pokemon.Name}</span>
+                    <span class="title">{namePokemon}</span>
                 </div>
             </section>
             <section class="sprite">
-<!--                 <div id="type" class="sprite">
-                    
-                </div> -->
-                <span class="type">{pokemon.Types__c} </span>
-                <!-- <c-poke-filters types={pokemon.Types__c}></c-poke-filters> -->
+                    <span class="type">{typePokemon} </span>
                 <span>Generation: {pokemon.Generation__c}</span>
             </section>
         </article>
-    </template>
-<!-- LWC1065: Invalid key value for element <span>. Key cannot reference for:each index index -->            
+    </template>            

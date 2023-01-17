@@ -15,10 +15,6 @@
     border: solid black 1px;
     border-radius: 5px;
 }
-.slds-input{
-    background-color: #85603d;
-    border: solid black 1px
-}
 input::placeholder{
     color: white;
 }
