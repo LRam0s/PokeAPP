@@ -1,0 +1,21 @@
+.container{
+    background-image: url('https://res.cloudinary.com/dpsc3qokx/image/upload/v1676049903/Pokedex_wuqxwu.jpg');
+    background-size:auto;
+    background-repeat: no-repeat;
+    height: 800px;
+    width: 1024px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+}
+.subcontainer{
+    display: flex;
+    gap: 3rem;
+}
+.subcontainer_move{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}

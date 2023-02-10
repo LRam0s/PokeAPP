@@ -1,5 +1,24 @@
 public with sharing class getAllPokemon {
     @AuraEnabled(Cacheable=true scope='global')
+    public static Pokemon__c getPokemonDetail(String pokemonId) {
+        return [SELECT ExtId__c, Name, Types__c, Image__c, Generation__c, Hp__c, Attack__c, Defense__c, Speed__c, Heigth__c, Weigth__c, Slot1__c, Slot2__c, Slot3__c, Slot4__c, Ability__c FROM Pokemon__c WHERE Id = :pokemonId ];
+
+    }
+    @AuraEnabled(Cacheable=true scope='global')
+    public static Abilities__c getAbility(String abilityId) {
+        return [SELECT Name, Effect__c FROM Abilities__c WHERE Id = :abilityId ];
+
+    }
+    @AuraEnabled(Cacheable=true scope='global')
+    public static Moves__c getSlot(String moveId) {
+        return [SELECT Name FROM Moves__c WHERE Id = :moveId ];
+
+    }
+
+    /* Hacer los test de las tres clases de arriba */
+
+
+    @AuraEnabled(Cacheable=true scope='global')
     public static List <Pokemon__c> getAllPokemon() {
         return [SELECT ExtId__c, Name, Types__c, Image__c, Generation__c FROM Pokemon__c ORDER BY ExtId__c ASC];
     }
