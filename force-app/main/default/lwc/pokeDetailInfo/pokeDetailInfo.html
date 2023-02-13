@@ -40,16 +40,16 @@
             </section>
             <section style="display: flex; justify-content:center">
                 <div style="display: flex; flex-direction:column">
-                    <p class="moves">{slot1}</p>
-                    <p class="moves">{slot2}</p>
+                    <p class="moves" onclick={OpenMoveDetail1}>{slot1}</p>
+                    <p class="moves" onclick={OpenMoveDetail2}>{slot2}</p>
                 </div>
                 <div style="display: flex; flex-direction:column">
-                    <p class="moves">{slot3}</p>
-                    <p class="moves">{slot4}</p>
+                    <p class="moves" onclick={OpenMoveDetail3}>{slot3}</p>
+                    <p class="moves" onclick={OpenMoveDetail4}>{slot4}</p>
                 </div>
             </section>
             <section class="ability">
-                <p style="padding: 10px; border-bottom: solid whitesmoke">Ability: {ability}</p>
+                <p style="padding: 10px; border-bottom: solid whitesmoke"  onclick={OpenAbilityDetail}>Ability: <span class="ability-name"> {ability}</span> </p>
                 <p style="width: 600px; padding: 10px; font-size: 20px">{abilityEffect}</p>
             </section>
         </article>

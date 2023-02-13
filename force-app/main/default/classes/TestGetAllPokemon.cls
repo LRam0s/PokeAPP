@@ -36,10 +36,29 @@ public with sharing class TestGetAllPokemon {
         Pokemon__c pokemon5 = new Pokemon__c (
             ExtId__c = 500,
             Name = 'Pikachu',
-            Types__c = 'Steel;Electric'
+            Types__c = 'Steel;Electric',
+            Image__c = 'url/img/pikachu',
+            Hp__c = 10,
+            Attack__c = 6,
+            Defense__c = 3,
+            Speed__c = 8,
+            Heigth__c = 13,
+            Weigth__c = 3
             );   
         pokemonList.add(pokemon5);
         insert pokemonList;
+
+        Moves__c move1 = new Moves__c(
+            Name = 'Rayo solar'
+
+        );
+        insert move1;
+
+        Abilities__c ability = new Abilities__c (
+            Name = 'Multitype',
+            Effect__c = 'Tiene todos los tipos del mundo'
+        );
+        insert ability;
 
     }
 
@@ -178,6 +197,49 @@ public with sharing class TestGetAllPokemon {
         Test.stopTest();
 
         System.assertEquals(numberExpected, numberActual, 'No es el mismo numero');
+
+    }
+
+
+    public static testmethod void shouldGetPokemonWhitAllDetail() {
+
+        Pokemon__c queryPokemon = [SELECT Id FROM Pokemon__c WHERE Name = 'Pikachu'];
+        String pokemonId = queryPokemon.Id;
+        String nameExpected = 'Pikachu';
+        Test.startTest();
+        Pokemon__c pokemonDetailTest = getAllPokemon.getPokemonDetail(pokemonId);
+        String pokemonName =  pokemonDetailTest.Name;       
+        Test.stopTest();
+
+        System.assertEquals(nameExpected, pokemonName, 'No es el mismo numero');
+
+    }
+
+    public static testmethod void shouldGetMove() {
+
+        Moves__c queryMove = [SELECT Id FROM Moves__c WHERE Name = 'Rayo solar'];
+        String moveId = queryMove.Id;
+        String nameExpected = 'Rayo solar';
+        Test.startTest();
+        Moves__c moveTest = getAllPokemon.getSlot(moveId);
+        String moveName =  moveTest.Name;       
+        Test.stopTest();
+
+        System.assertEquals(nameExpected, moveName, 'No es el mismo numero');
+
+    }
+
+    public static testmethod void shouldGetAbility() {
+
+        Abilities__c abilityMove = [SELECT Id FROM Abilities__c WHERE Name = 'Multitype'];
+        String abilityId = abilityMove.Id;
+        String nameExpected = 'Multitype';
+        Test.startTest();
+        Abilities__c abilityTest = getAllPokemon.getAbility(abilityId);
+        String abilityName =  abilityTest.Name;       
+        Test.stopTest();
+
+        System.assertEquals(nameExpected, abilityName, 'No es el mismo numero');
 
     }
 

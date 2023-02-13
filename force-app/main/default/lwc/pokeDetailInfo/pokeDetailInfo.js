@@ -2,6 +2,7 @@ import { LightningElement, api, wire, track} from 'lwc';
 import getPokemonDetail from '@salesforce/apex/getAllPokemon.getPokemonDetail';
 import getSlot from '@salesforce/apex/getAllPokemon.getSlot';
 import getAbility from '@salesforce/apex/getAllPokemon.getAbility';
+import { NavigationMixin } from 'lightning/navigation';
 
 export default class PokeDetailInfo extends LightningElement {
     @track pokemon;
@@ -39,6 +40,7 @@ export default class PokeDetailInfo extends LightningElement {
         getSlot({ moveId: this.moveId1 })
         .then(result => {
             this.slot1 = result.Name;
+            this.slot1Id = result.Id;
         })
         .catch(error => {
             console.log(error)
@@ -92,6 +94,28 @@ get typePokemon(){
     }
         return this.pokemon.data.Types__c
 }
+
+OpenMoveDetail1(){
+    const url = '/lightning/r/Moves__c/' + this.moveId1 + '/view';
+    window.open(url, "_self");
+}
+OpenMoveDetail2(){
+    const url = '/lightning/r/Moves__c/' + this.moveId2 + '/view';
+    window.open(url, "_self");
+}
+OpenMoveDetail3(){
+    const url = '/lightning/r/Moves__c/' + this.moveId3 + '/view';
+    window.open(url, "_self");
+}
+OpenMoveDetail4(){
+    const url = '/lightning/r/Moves__c/' + this.moveId4 + '/view';
+    window.open(url, "_self");
+}
+OpenAbilityDetail(){
+    const url = '/lightning/r/Abilities__c/' + this.abilityId + '/view';
+    window.open(url, "_self");
+}
+
 }
 
 
