@@ -1,21 +1,81 @@
 .container{
-    background-image: url('https://res.cloudinary.com/dpsc3qokx/image/upload/v1676049903/Pokedex_wuqxwu.jpg');
+    background-image: url('https://res.cloudinary.com/dpsc3qokx/image/upload/v1676059470/Pokedex_base_skbqex.jpg');
     background-size:auto;
     background-repeat: no-repeat;
     height: 800px;
     width: 1024px;
     border-radius: 5px;
     display: flex;
-    flex-direction: column;
     gap: 2rem;
 
 }
-.subcontainer{
-    display: flex;
-    gap: 3rem;
+p {
+    font-size: x-large;
+    color: black;
 }
-.subcontainer_move{
+.buble{
+    display: flex;
+    background-color: #D2CFCD;
+    border-radius: 26px;
+    width: 266px;
+    height: 60px;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+.nameId{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url('https://res.cloudinary.com/dpsc3qokx/image/upload/v1676059485/Banner_v5d390.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 6px;
+    border-radius: 50px;
+    min-width: 600px;
+
+}
+.hyw{
+    display: flex;
+    justify-content: space-around;
+    background-color: #D2CFCD;
+    padding: 8px;
+    margin: 5px;
+    border: solid grey 1px;
+}
+.atributes{
+    display: flex;
+    justify-content: space-around;
+    background-color: #D2CFCD;
+    margin-inline: 6px;
+    border: solid whitesmoke 1px;
+    width: 600px;
+}
+.title-move{
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    background-color: #202020;
+    width: 125px;
+    border-radius: 50px;
+    color: whitesmoke;
+    font-size: 28px;
+}
+.moves{
+    background-color: rgb(1 68 134 / 55%);
+    padding: 30px;
+    border-radius: 20px;
+    margin: 5px;
+    border: solid black 2px;
+    display: flex;
+    justify-content: center;
+}
+.ability{
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    background-color: #d2cfcd;
+    margin: 5px;
+    border-radius: 20px;
+    border: solid grey 2px;
 }

@@ -1,54 +1,59 @@
 <template>
     <template if:true={pokemon.data}>
     <article class="container">
-        
+        <article style="display: flex; flex-direction:column; gap: 8rem">
+            <img style="width:400px; position:relative; top:15%" src={pokemon.data.Image__c} alt="">
+            <div style="display: flex; flex-direction:column; gap: 2rem; align-items:center">
+                <p class="buble">{typePokemon}</p>
+                <p class="buble">Generation: {pokemon.data.Generation__c}</p>
+            </div>
+        </article>
+        <article style="display: flex; flex-direction:column; justify-content:center">
+            <div class="nameId">
+                <p>ExtId: #{pokemon.data.ExtId__c}</p>
+                <p style="color: whitesmoke; font-size:xx-large">{pokemon.data.Name}</p>
+            </div>
+            <div class="hyw">
+                <p>Heigth: {pokemon.data.Heigth__c}</p>
+                <p>Weigth: {pokemon.data.Weigth__c}</p>
+            </div>
+            <section style="display: flex; flex-direction:column; align-items:center">
+                <div class="atributes" style="border-top-color:grey; border-inline-color:grey">
+                    <p style="width: 90px;">Hp</p>
+                    <p>{pokemon.data.Hp__c}</p>
+                </div>
+                <div class="atributes" style="border-inline-color:grey">
+                    <p style="width: 90px;">Attack</p>
+                    <p>{pokemon.data.Attack__c}</p>
+                </div >
+                <div class="atributes" style="border-inline-color:grey">
+                    <p style="width: 90px;">Defense</p>
+                    <p>{pokemon.data.Defense__c}</p>
+                </div>
+                <div class="atributes" style="border-inline-color:grey; border-bottom-color:grey">
+                    <p style="width: 90px;">Speed</p>
+                    <p>{pokemon.data.Speed__c}</p>
+                </div>
+            </section>
+            <section style="display:flex; justify-content:center; margin: 5px">
+                <p class="title-move">Moves</p>
+            </section>
+            <section style="display: flex; justify-content:center">
+                <div style="display: flex; flex-direction:column">
+                    <p class="moves">{slot1}</p>
+                    <p class="moves">{slot2}</p>
+                </div>
+                <div style="display: flex; flex-direction:column">
+                    <p class="moves">{slot3}</p>
+                    <p class="moves">{slot4}</p>
+                </div>
+            </section>
+            <section class="ability">
+                <p style="padding: 10px; border-bottom: solid whitesmoke">Ability: {ability}</p>
+                <p style="width: 600px; padding: 10px; font-size: 20px">{abilityEffect}</p>
+            </section>
+        </article>
+
     </article>
 </template>
 </template>
-
-
-<!-- <section class="subcontainer">
-            <section> 
-            <div>
-                <div style="display: flex; gap: 1rem">
-                    <p>ID: {pokemon.data.ExtId__c}</p>
-                    <p>{pokemon.data.Name}</p>
-                </div>
-                <img src= {pokemon.data.Image__c} alt="">
-                <div style="display: flex; gap: 1rem">
-                    <p>Generation: {pokemon.data.Generation__c}</p>
-                    <p>{typePokemon}</p>
-                </div>
-            </div>
-            </section>
-            <section>
-            <div>
-                <div>
-                    <p>HP: {pokemon.data.Hp__c}</p>
-                    <p>Attack: {pokemon.data.Attack__c}</p>
-                    <p>Defense: {pokemon.data.Defense__c}</p>
-                    <p>Speed: {pokemon.data.Speed__c}</p>
-                </div>
-                <div>
-                    <p>Heigth: {pokemon.data.Heigth__c}</p>
-                    <p>Weigth: {pokemon.data.Weigth__c}</p>
-                </div>
-            </div>
-            </section>
-        </section>
-        <section class="subcontainer_move">
-            <div style="display: flex; gap: 1rem">
-                <div style="display: flex; flex-direction:column; gap: 1rem">
-                    <p>{slot1}</p>
-                    <p>{slot2}</p>
-                </div>
-                <div style="display: flex; flex-direction:column; gap: 1rem">
-                    <p>{slot3}</p>
-                    <p>{slot4}</p>
-                </div>
-            </div>
-            <div style="display: flex; flex-direction:column; gap: 1rem">
-                <p>Ability: {ability}</p>
-                <p>{abilityEffect}</p>
-            </div>
-        </section> -->
