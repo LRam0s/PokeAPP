@@ -2,7 +2,6 @@ import { LightningElement, api, wire, track} from 'lwc';
 import getPokemonDetail from '@salesforce/apex/getAllPokemon.getPokemonDetail';
 import getSlot from '@salesforce/apex/getAllPokemon.getSlot';
 import getAbility from '@salesforce/apex/getAllPokemon.getAbility';
-import { NavigationMixin } from 'lightning/navigation';
 
 export default class PokeDetailInfo extends LightningElement {
     @track pokemon;

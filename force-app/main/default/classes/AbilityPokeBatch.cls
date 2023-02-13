@@ -23,7 +23,7 @@ global class AbilityPokeBatch implements Database.Batchable<Integer>, Database.A
 
             ability.ExtId__c = (Integer)result.get('id');
             String UpperName = (String) result.get('name');
-            ability.Name = UpperName.toUppercase().substring(0,1) + UpperName.substring(1);
+            ability.Name = UpperName.capitalize();
 
             List<Object> effect = (List<Object>)result.get('effect_entries');
             if (effect.isEmpty()) {

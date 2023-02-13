@@ -2,7 +2,7 @@
     <template if:true={pokemon.data}>
     <article class="container">
         <article style="display: flex; flex-direction:column; gap: 8rem">
-            <img style="width:400px; position:relative; top:15%" src={pokemon.data.Image__c} alt="">
+            <img style="width:400px; position:relative; top:15%" src={pokemon.data.Sprite__c} alt="">
             <div style="display: flex; flex-direction:column; gap: 2rem; align-items:center">
                 <p class="buble">{typePokemon}</p>
                 <p class="buble">Generation: {pokemon.data.Generation__c}</p>

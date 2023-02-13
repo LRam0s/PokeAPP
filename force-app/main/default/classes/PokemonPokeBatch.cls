@@ -22,7 +22,7 @@ global class PokemonPokeBatch implements Database.Batchable<Integer>, Database.A
             Map<String, Object> result = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
             pokemon.ExtId__c = (Integer)result.get('id');
             String UpperName = (String) result.get('name');
-            pokemon.Name = UpperName.toUppercase().substring(0,1) + UpperName.substring(1);
+            pokemon.Name = UpperName.capitalize();
             pokemon.Heigth__c = (Integer)result.get('height');
             pokemon.Weigth__c = (Integer)result.get('weight');
             Map<String, Object> sprites = (Map<String, Object>)result.get('sprites');

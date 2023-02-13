@@ -30,7 +30,7 @@ global class movementPokeBatch implements Database.Batchable<Integer>, Database.
             Map<String, Object> type = (Map<String, Object>)result.get('type');
             movement.Type__c = (String)type.get('name');
             String UpperName = (String) result.get('name');
-            movement.Name = UpperName.toUppercase().substring(0,1) + UpperName.substring(1);
+            movement.Name = UpperName.capitalize();
             if (result.get('effect_chance') == null) {
                 movement.Effect_chance__c = 'The move doesnt have an associated side effect.';
             } else {
