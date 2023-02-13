@@ -1,0 +1,51 @@
+<template>
+    <article class="container">
+        <section>
+            <div class="nameId">
+                <p>ExtId: #{extId}</p>
+                <p style="color: whitesmoke; font-size:xx-large">{name}</p>
+            </div>
+        </section>
+        <section style="display: flex; justify-content:space-around; width:600px">
+            <div style="display: flex; flex-direction:column; align-items:center; gap:12px">
+                <div class="bubles">
+                    <p style="font-size: large;border-bottom: solid grey 2px" class="title-buble">Type</p>
+                    <p class="title-buble">{type}</p>
+                </div>
+                <div class="bubles">
+                    <p style="font-size: large;border-bottom: solid grey 2px" class="title-buble">Power</p>
+                    <p class="title-buble">{power}</p>
+                </div>
+                <div class="bubles">
+                    <p style="font-size: large;border-bottom: solid grey 2px" class="title-buble">PP</p>
+                    <p class="title-buble">{pp}</p>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction:column; align-items:center; gap:12px">
+                <div class="bubles">
+                    <p style="font-size: large;border-bottom: solid grey 2px" class="title-buble">Accuracy</p>
+                    <p class="title-buble">{accuracy}</p>
+                </div>
+                <div class="bubles">
+                    <p style="font-size: large;border-bottom: solid grey 2px" class="title-buble">Target</p>
+                    <p class="title-buble">{target}</p>
+                </div>
+                <div class="bubles">
+                    <p style="font-size: large;border-bottom: solid grey 2px" class="title-buble">Priority</p>
+                    <p class="title-buble">{priority}</p>
+                </div>
+            </div>
+        </section>
+        <section style="display: flex; flex-direction:column; align-items:center; gap: 5px">
+            <div class="bubles">
+                <p style="font-size: large;border-bottom: solid grey 2px" class="title-buble">Effect Chance</p>
+                <p class="title-buble" style="width:410px; font-size:large; padding:5px">{effectChance}</p>
+            </div>
+            <div class="effect">
+                <p class="title-effect">Effect</p>
+                <p class="title-effect-buble">{effect}</p>
+            </div>
+        </section>
+    </article>
+
+</template>

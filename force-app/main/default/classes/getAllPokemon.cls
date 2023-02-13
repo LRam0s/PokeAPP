@@ -6,12 +6,12 @@ public with sharing class getAllPokemon {
     }
     @AuraEnabled(Cacheable=true scope='global')
     public static Abilities__c getAbility(String abilityId) {
-        return [SELECT Name, Effect__c FROM Abilities__c WHERE Id = :abilityId ];
+        return [SELECT Name, Effect__c, ExtId__c FROM Abilities__c WHERE Id = :abilityId ];
 
     }
     @AuraEnabled(Cacheable=true scope='global')
     public static Moves__c getSlot(String moveId) {
-        return [SELECT Name FROM Moves__c WHERE Id = :moveId ];
+        return [SELECT Name, Accuracy__c, Effect__c, Effect_chance__c, ExtId__c, Power__c, Pp__c, Priority__c, Target__c, Type__c FROM Moves__c WHERE Id = :moveId ];
 
     }
 
