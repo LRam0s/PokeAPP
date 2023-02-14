@@ -1,6 +1,5 @@
 import { LightningElement, wire, track } from 'lwc';
-import searchPokemon from '@salesforce/apex/getAllPokemon.searchPokemon';
-import filterPicklist from '@salesforce/apex/getAllPokemon.filterPicklist';
+import filterComplete from '@salesforce/apex/getAllPokemon.filterComplete';
 import { NavigationMixin } from 'lightning/navigation';
 
 export default class PokeContainer extends NavigationMixin (LightningElement) {
@@ -67,13 +66,8 @@ export default class PokeContainer extends NavigationMixin (LightningElement) {
         { label: 'Fairy', value: 'Fairy' },
     ];
 
-    @wire(searchPokemon, {pokemonName: '$pokemonName'})
+    @wire(filterComplete, {pokemonName: '$pokemonName', generation: '$generation', type: '$type', type2: '$type2'})
     wiredPokemon(result) {
-        this.pokemons = result;
-        this.count = this.countTotalPokemon();
-    }
-    @wire(filterPicklist, {generation: '$generation', type: '$type', type2: '$type2'})
-    wiredPicklist(result) {
         this.pokemons = result;
         this.count = this.countTotalPokemon();
     }

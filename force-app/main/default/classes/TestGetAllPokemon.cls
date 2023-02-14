@@ -105,10 +105,13 @@ public with sharing class TestGetAllPokemon {
     //Name vacio trae todo
     public static testmethod void shouldGetAllPokemonBecauseNoNameSearch() {
         String testName = '';
+        Integer testGeneration = 0;
+        String testType1 = '';
+        String testType2 = '';
         Integer numberExpected = 5;
 
         Test.startTest();
-        List <Pokemon__c> getPokemonWhitName = getAllPokemon.searchPokemon(testName);
+        List <Pokemon__c> getPokemonWhitName = getAllPokemon.filterComplete(testName,testGeneration,testType1,testType2);
         Integer numberActual = getPokemonWhitName.size();        
         Test.stopTest();
 
@@ -119,10 +122,13 @@ public with sharing class TestGetAllPokemon {
     public static testmethod void shouldGetPokemonWhitSearchName() {
 
         String testName = 'Tyra';
+        Integer testGeneration = 0;
+        String testType1 = '';
+        String testType2 = '';
         Integer numberExpected = 1;
 
         Test.startTest();
-        List <Pokemon__c> getPokemonWhitName = getAllPokemon.searchPokemon(testName);
+        List <Pokemon__c> getPokemonWhitName = getAllPokemon.filterComplete(testName,testGeneration,testType1,testType2);
         Integer numberActual = getPokemonWhitName.size();        
         Test.stopTest();
 
@@ -131,6 +137,7 @@ public with sharing class TestGetAllPokemon {
     }
     //generacion y tipos vacios trae todo
     public static testmethod void shoulGetAllPokemonBecauseGenerationAndTypesAreNull() {
+        String testName = '';
         Integer testGeneration = 0;
         String testType1 = '';
         String testType2 = '';
@@ -138,7 +145,7 @@ public with sharing class TestGetAllPokemon {
 
         Integer numberExpected = 5;
         Test.startTest();
-        List <Pokemon__c> allPokemon = getAllPokemon.filterPicklist(testGeneration, testType1,testType2);
+        List <Pokemon__c> allPokemon = getAllPokemon.filterComplete(testName,testGeneration,testType1,testType2);
         Integer numberActual = allPokemon.size();        
         Test.stopTest();
 
@@ -150,7 +157,7 @@ public with sharing class TestGetAllPokemon {
 
     //Generacion algo, tipo null, trae generacion
     public static testmethod void shoulGetPokemonWhitGenerationFullAndTypeNull() {
-
+        String testName = '';
         Integer testGeneration = 1;
         String testType1 = '';
         String testType2 = '';
@@ -158,7 +165,7 @@ public with sharing class TestGetAllPokemon {
 
         Integer numberExpected = 2;
         Test.startTest();
-        List <Pokemon__c> allPokemon = getAllPokemon.filterPicklist(testGeneration, testType1,testType2);
+        List <Pokemon__c> allPokemon = getAllPokemon.filterComplete(testName,testGeneration,testType1,testType2);
         Integer numberActual = allPokemon.size();        
         Test.stopTest();
 
@@ -167,7 +174,7 @@ public with sharing class TestGetAllPokemon {
     }
     //Generacion null, tipo con contenido, verifica si tiene uno o dos tipos y los trae
     public static testmethod void shoulGetPokemonWhitGenerationNullAndTypeFull() {
-
+        String testName = '';
         Integer testGeneration = 0;
         String testType1 = 'Steel';
         String testType2 = 'Electric';
@@ -175,7 +182,7 @@ public with sharing class TestGetAllPokemon {
 
         Integer numberExpected = 1;
         Test.startTest();
-        List <Pokemon__c> allPokemon = getAllPokemon.filterPicklist(testGeneration, testType1,testType2);
+        List <Pokemon__c> allPokemon = getAllPokemon.filterComplete(testName,testGeneration,testType1,testType2);
         Integer numberActual = allPokemon.size();        
         Test.stopTest();
 
@@ -184,7 +191,7 @@ public with sharing class TestGetAllPokemon {
     }
     //Generacion y tipo con contenido, trae todo lo que coincida
     public static testmethod void shoulGetPokemonWhitGenerationAndTypeFull() {
-
+        String testName = '';
         Integer testGeneration = 1;
         String testType1 = 'Grass';
         String testType2 = '';
@@ -192,7 +199,41 @@ public with sharing class TestGetAllPokemon {
 
         Integer numberExpected = 1;
         Test.startTest();
-        List <Pokemon__c> allPokemon = getAllPokemon.filterPicklist(testGeneration, testType1,testType2);
+        List <Pokemon__c> allPokemon = getAllPokemon.filterComplete(testName,testGeneration,testType1,testType2);
+        Integer numberActual = allPokemon.size();        
+        Test.stopTest();
+
+        System.assertEquals(numberExpected, numberActual, 'No es el mismo numero');
+
+    }
+
+    public static testmethod void shoulGetPokemonWhitNameAndTypeFull() {
+        String testName = 'Tyra';
+        Integer testGeneration = 0;
+        String testType1 = 'Rock';
+        String testType2 = '';
+
+
+        Integer numberExpected = 1;
+        Test.startTest();
+        List <Pokemon__c> allPokemon = getAllPokemon.filterComplete(testName,testGeneration,testType1,testType2);
+        Integer numberActual = allPokemon.size();        
+        Test.stopTest();
+
+        System.assertEquals(numberExpected, numberActual, 'No es el mismo numero');
+
+    }
+
+    public static testmethod void shoulGetPokemonWhitNameAndGenerationFull() {
+        String testName = 'Ivy';
+        Integer testGeneration = 1;
+        String testType1 = '';
+        String testType2 = '';
+
+
+        Integer numberExpected = 1;
+        Test.startTest();
+        List <Pokemon__c> allPokemon = getAllPokemon.filterComplete(testName,testGeneration,testType1,testType2);
         Integer numberActual = allPokemon.size();        
         Test.stopTest();
 
