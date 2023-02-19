@@ -44,7 +44,7 @@ public with sharing class getAllPokemon {
             return [SELECT ExtId__c, Name, Types__c, Image__c, Generation__c FROM Pokemon__c WHERE Generation__c = :generation ORDER BY ExtId__c ASC];
         } else if (pokemonName == '' && generation == 0 && type != '') {
             String searchType = getTypePokemon(type, type2);
-            return [SELECT ExtId__c, Name, Types__c, Image__c, Generation__c FROM Pokemon__c WHERE Types__c =:searchType ORDER BY ExtId__c ASC];
+            return [SELECT ExtId__c, Name, Types__c, Image__c, Generation__c FROM Pokemon__c WHERE Types__c INCLUDES (:searchType) ORDER BY ExtId__c ASC];
         } else if (pokemonName != '' && generation == 0 && type == '') {
             pokemonName = '%' + pokemonName + '%';
             return [SELECT ExtId__c, Name, Types__c, Image__c, Generation__c FROM Pokemon__c WHERE Name LIKE :pokemonName ORDER BY ExtId__c ASC];
@@ -54,14 +54,14 @@ public with sharing class getAllPokemon {
         } else if (pokemonName != '' && generation == 0 && type != '') {
             pokemonName = '%' + pokemonName + '%';
             String searchType = getTypePokemon(type, type2);
-            return [SELECT ExtId__c, Name, Types__c, Image__c, Generation__c FROM Pokemon__c WHERE Name LIKE :pokemonName AND Types__c =:searchType ORDER BY ExtId__c ASC];
+            return [SELECT ExtId__c, Name, Types__c, Image__c, Generation__c FROM Pokemon__c WHERE Name LIKE :pokemonName AND Types__c INCLUDES (:searchType) ORDER BY ExtId__c ASC];
         } 
 
 
 
         pokemonName = '%' + pokemonName + '%';
             String searchType = getTypePokemon(type, type2);
-            return [SELECT ExtId__c, Name, Types__c, Image__c, Generation__c FROM Pokemon__c WHERE Name LIKE :pokemonName AND Generation__c = :generation AND Types__c =:searchType ORDER BY ExtId__c ASC];
+            return [SELECT ExtId__c, Name, Types__c, Image__c, Generation__c FROM Pokemon__c WHERE Name LIKE :pokemonName AND Generation__c = :generation AND Types__c INCLUDES (:searchType) ORDER BY ExtId__c ASC];
     }
 
 

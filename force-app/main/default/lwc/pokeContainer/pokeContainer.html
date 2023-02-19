@@ -25,9 +25,9 @@
                 <div style="display: flex; flex-direction:column; align-items:center">
                     <p style="font-weight: bold; text-decoration:underline; font-size:15px">Generation</p>
                     <select aria-label="Generación: " onchange={handleSearchGeneration} class="innerPicklist">
-                        <template for:each={options} for:item="option">
-                            <option key={option.value} value={option.value} label={option.label}>{option.label}</option>
-                        </template>
+                            <template for:each={options} for:item="option">
+                                <option key={option.value} value={option.value} label={option.label}>{option.label}</option>
+                            </template>
                     </select>
                 </div>
                 <div style="display: flex; flex-direction:column; align-items:center">
@@ -46,7 +46,11 @@
                             </template>
                         </select>
                     </div>
-                </div>                    
+                </div>
+                <div style="display: flex; justify-content:center; align-items:baseline">
+
+                    <button class="innerPicklist" style="height:35px;" onclick={resetFilters}>Reset filters</button>                    
+                </div>
             </article>
         </section>
                 <template for:each={pokemons.data} for:item="pokemon">
@@ -55,9 +59,10 @@
                     </section>
                 </template>
     </template>
-    <template if:false={pokemons}>
-        <div class="slds-text-color_error">
-            Ocurrió un error al cargar la pokedex.
+    <template if:false={count}>
+        <div style="display: flex; flex-direction:column; align-items:center; gap: 10px">
+            <img src="https://res.cloudinary.com/dpsc3qokx/image/upload/c_scale,w_330/v1676562210/klipartz.com_xnbpqb.png" alt="">
+            <p style="font-size: x-large;">La búsqueda no obtuvo resultados</p>
         </div>
     </template>
 </template>

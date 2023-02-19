@@ -10,8 +10,11 @@ export default class PokeContainer extends NavigationMixin (LightningElement) {
 	searchType = '';
     @track pokemons;
     @track count = 898;
+
+
+    
 	
-	options = [
+ options = [
         { label: 'All generations', value: 0 },
         { label: 'I', value: 1 },
         { label: 'II', value: 2 },
@@ -23,7 +26,7 @@ export default class PokeContainer extends NavigationMixin (LightningElement) {
         { label: 'VIII', value: 8 },
 
     ];
-	types = [
+ types = [
         { label: 'All types', value: '' },
         { label: 'Normal', value: 'Normal' },
         { label: 'Fighting', value: 'Fighting' },
@@ -44,7 +47,7 @@ export default class PokeContainer extends NavigationMixin (LightningElement) {
         { label: 'Dark', value: 'Dark' },
         { label: 'Fairy', value: 'Fairy' },
     ];
-	types2 = [
+ types2 = [
         { label: 'All Types', value: '' },
         { label: 'Normal', value: 'Normal' },
         { label: 'Fighting', value: 'Fighting' },
@@ -83,6 +86,9 @@ export default class PokeContainer extends NavigationMixin (LightningElement) {
 		const generation = event.target.value;
         this.delayTimeout = setTimeout(() => {
 			this.generation = generation;
+            if (this.generation == 0){
+
+            }
 		}, 300);
     }
 	handleSearchType(event){
@@ -116,6 +122,14 @@ export default class PokeContainer extends NavigationMixin (LightningElement) {
             this.count = aux.length;
         }
         return this.count;
+    }
+
+    resetFilters(){
+        this.pokemonName = '';
+        this.generation = 0;
+        this.type = '';
+        this.searchType = '';
+        
     }
 
 }
