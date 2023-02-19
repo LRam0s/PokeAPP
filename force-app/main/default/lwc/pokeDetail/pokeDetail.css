@@ -10,7 +10,7 @@
     background: url('https://res.cloudinary.com/dpsc3qokx/image/upload/v1673809864/background_hxga97.png') no-repeat 0 0 scroll;
 
 }
-
+/* Animación */
 .container:hover{
     transform: scale(105%);
 }
