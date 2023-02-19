@@ -16,7 +16,6 @@ global class AbilityPokeBatch implements Database.Batchable<Integer>, Database.A
         request.setHeader('Content-Type', 'application/json');
         HttpResponse response = http.send(request);
 
-
         if (response.getStatusCode() == 200) {
             Abilities__c ability = new Abilities__c();
             Map<String, Object> result = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
