@@ -1,5 +1,5 @@
 .container{
-    background-image: url('https://res.cloudinary.com/dpsc3qokx/image/upload/v1676059470/Pokedex_base_skbqex.jpg');
+    background-image: url('https://res.cloudinary.com/dpsc3qokx/image/upload/v1676059470/PokeApp/Pokedex_base_skbqex.jpg');
     background-size:cover;
     background-repeat: no-repeat;
     border-radius: 5px;
@@ -18,7 +18,7 @@ p {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-image: url('https://res.cloudinary.com/dpsc3qokx/image/upload/v1676318538/Group_1_u1cbyn.jpg');
+    background-image: url('https://res.cloudinary.com/dpsc3qokx/image/upload/v1676318538/PokeApp/Group_1_u1cbyn.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
